@@ -2,35 +2,40 @@
 # Script para fazer a configuração e instalação de programas, depois da instalação do archlinux.
 
 # configurando horário
+echo "[+] Mudando fuso horário para America/São Paulo."
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 hwclock --systohc --utc
 
 # Configurando idioma e teclado
-echo "pt_BR.UTF-8 UTF-8" >> /etc/locale.gen
+echo "[+] Configurando idioma para Inglês"
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
-echo "LANG=pt_BR.UTF-8" >> /etc/locale.conf
-echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
+echo "Configurando teclado para ABNT2"
+echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
 # Configurar o teclado para o ambiente X
 localectl set-x11-keymap br abnt2
 
 # ================================================
 # Instalação de programas 
 # ================================================
-
+echo "[+] Instalando programas."
 # Básicos
-pacman -S sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm ntfs-3g ranger epdfview scrot cron
+pacman -S --noconfirm sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm ntfs-3g ranger epdfview scrot cron
 
 # Rede
-pacman -S wireless_tools wpa_actiond dialog network-manager-applet links curl
+pacman -S --noconfirm wireless_tools wpa_actiond dialog network-manager-applet links
 
 # Áudio/Video
-pacman -S pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc 
+pacman -S --noconfirm pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc 
 
 # Configurando o sudo
+echo "[+] Abilitando o grupo Wheel para usar o SUDO."
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' >> /etc/sudoes
 
 # Abilitando gerenciador de exibição
+echo "Abilitando o gerenciador de login LXDM"
 systemctl enable lxdm.service
 
 reboot
