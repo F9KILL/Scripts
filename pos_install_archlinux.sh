@@ -19,22 +19,22 @@ localectl set-x11-keymap br abnt2
 # ================================================
 #
 #	[ Sistema ]
-#		intel-ucode xf86-input-synaptics cron xdg-user-dirs clang
+#		intel-ucode xf86-input-synaptics cron xdg-user-dirs clang cups cups-pdf ttf-dejavu noto-fonts dina-font profont ttf-liberation ttf-freefont
 #
 #	[ Interface]
 #		xorg xorg-xinit fluxbox lxdm compton gtk-engines gtk-chtheme gtk-engines-murrine
 #
 #	[ Jogos ]
-#		retroarch playonlinux
+#		retroarch playonlinux wine
 #
 #	[ Áudio/Video ]
-#		simplescreenrecorder pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volmeicon audacity
+#		simplescreenrecorder pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volmeicon audacity mpg123 (openal fluidsynth)
 #
 #	[ Acessórios ]
 #		ranger epdfview xorg-xcalc vim leafpad anki xsane libreoffice
 #
 #	[ Imagens ]
-#		(scrot giblib) feh nitrogen gimp inkscape
+#		(scrot giblib) feh nitrogen gimp inkscape imagemagick
 #
 #	[ Rede ]
 #		wireless_tools wpa_actiond dialog network-manager-applet links firefox thunderbird apache php tor chromium wget
@@ -46,9 +46,9 @@ localectl set-x11-keymap br abnt2
 #		xterm ntfs-3g sudo htop sakura zsh (gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools) unzip unrar p7zip lxappearance virtualbox virtualbox-guest-dkms virtualbox-gues-iso
 #
 #	[ Opcional ]
-#		nvidia nvidia-settings opencl-nvidia
+#		nvidia nvidia-settings opencl-nvidia ibus ibus-anthy
 
-pacman -S --noconfirm sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-gues-iso simplescreenrecorder compton clang vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip nvidia nvidia-settings opencl-nvidia gtk-engines gtk-chtheme gtk-engines-murrine john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond dialog network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volmeicon audacity nitrogen gimp inkscape retroarch playonlinux
+pacman -S --noconfirm sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-gues-iso simplescreenrecorder compton clang vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip nvidia nvidia-settings opencl-nvidia gtk-engines gtk-chtheme gtk-engines-murrine john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond dialog network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volmeicon audacity nitrogen gimp inkscape retroarch playonlinux ttf-dejavu noto-fonts dina-font profont ttf-liberation ttf-freefont cups cups-pdf wine mpg123 openal fluidsynth ibus ibus-anthy
 
 
 # Configurando o sudo
@@ -81,7 +81,9 @@ depmod -a
 
 # Corregando configurações do fluxbox
 git clone https://github.com/Hv60t/Configs.git
+rm -rf ~/.fluxbox
 cp -R Configs/fluxbox ~/.fluxbox
+rm -rf /home/hv60t/.fluxbox
 cp -R Configs/fluxbox /home/hv60t/.fluxbox
 rm -rf Configs
 chwon hv60t:hv60t -R /home/hv60t/.fluxbox
