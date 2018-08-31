@@ -1,20 +1,22 @@
 #!/bin/bash
 # Script para fazer a configuração e instalação de programas, depois da instalação do archlinux.
 
-# configurando horário
+echo -e "\033[32;1m[+] Configurando Fuso Horário para [\033[m \033[33;1mSão Paulo\033[m \033[32;1m]\033[m"
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 hwclock --systohc --utc
 
-# Configurando idioma do sistema para inglês.
+echo -e "\033[32;1m[+] Configurando locale.gen para inglês [\033[m \033[33;1men_US.UTF-8\033[m \033[32;1m]\033[m"
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
+
+echo -e "\033[32;1m[+] Configurando LANG para inglês [\033[m \033[33;1men_US.UTF-8\033[m \033[32;1m]\033[m"
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
-# Configurando teclado para ABNT2.
+echo -e "\033[32;1m[+] Configurando KEYMAP para ABNT2 [\033[m \033[33;1mbr-abnt2\033[m \033[32;1m]\033[m"
 echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
 localectl set-x11-keymap br abnt2
 
-# Configuração modo de suspensão
+echo -e "\033[32;1m[+] Configurando modo de suspenção.\033[m"
 echo "HandleLidSwitch=suspend" >> /etc/systemd/logind.conf
 echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 
@@ -58,38 +60,41 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #	[ Opcional ]
 #		nvidia nvidia-settings opencl-nvidia ibus ibus-anthy
 
+echo -e "\033[32;1m[+] Seleção e instalação de programas.\033[m"
 pacman -S sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip nvidia nvidia-settings opencl-nvidia gtk-engines gtk-chtheme john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape retroarch playonlinux ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups cups-pdf wine mpg123 openal ibus ibus-anthy
 
-# Configurando o sudo
+echo -e "\033[32;1m[+] Configurando SUDO.\033[m"
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
-# Criando diretórios do usuário.
+echo -e "\033[32;1m[+] Criando diretórios do usuário.\033[m"
 xdg-user-dirs-update
 
-# Abilitando gerenciador de login.
+echo -e "\033[32;1m[+] Abilitando o LXDM na inicialização.\033[m"
 systemctl enable lxdm.service
 
-# Criando usuário.
+echo -e "\033[32;1m[+] Abilitando o NetworkManager na inicialização.\033[m"
+systemctl enable NetworkManager.service
+
+echo -e "\033[32;1m[+] Criando usuário [\033[m \033[33;1mhv60t\033[m \033[32;1m]\033[m"
 useradd -m -g users -G wheel,storage,power -s /bin/zsh hv60t
 echo ""
-echo -e "\033[32;1m[+] Informe a senha para o novo usuário\033[0m"
+echo -e "\033[32;1m[+] Informe a senha para o usuário hv60t.\033[m"
 passwd hv60t
 
-# Adicionando usuário ao grupo virtualbox
+echo -e "\033[32;1m[+] Adicionando usuário hv60t para o grupo [\033[m \033[33;1mvboxusers\033[m \033[32;1m]\033[m"
 gpasswd -a hv60t vboxusers
 
 # Carregando modulo do virtualbox na inicialização.
 echo vboxdrv >> /etc/modules-load.d/virtualbox.conf
 
-# Atualizar a base de dados dos módulos.
+echo -e "\033[32;1m[+] Atualizar a base de dados dos módulos.\033[m"
 depmod -a
 
-# Corregando configurações do fluxbox
+echo -e "\033[32;1m[+] Carregando as configurações do fluxbox.\033[m"
 git clone https://github.com/Hv60t/Configs.git
 cp -R Configs/fluxbox ~/.fluxbox
 cp -R Configs/fluxbox /home/hv60t/.fluxbox
 chown hv60t:users -R /home/hv60t/.fluxbox
 rm -rf Scripts
-
-# Reiniciando o sistema.
-reboot
+echo ""
+echo -e "\033[31;1;5m[+] REINICIAR O SISTEMA.\033[m"
