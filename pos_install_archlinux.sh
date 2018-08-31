@@ -26,7 +26,7 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #
 #	[ Sistema ]
 #		intel-ucode xf86-input-synaptics cron xdg-user-dirs cups cups-pdf 
-#		ttf-dejavu noto-fonts ttf-liberation ttf-freefont
+#		ttf-dejavu noto-fonts ttf-liberation ttf-freefont ntfs-3g
 #
 #	[ Interface]
 #		xorg xorg-xinit fluxbox lxdm compton gtk-engines gtk-chtheme gtk-engines-murrine
@@ -53,7 +53,7 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #		wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk
 #
 #	[ Gerenciar Sistema ]
-#		xterm ntfs-3g sudo htop sakura zsh (gparted dosfstools f2fs-tools btrfs-progs 
+#		xterm sudo htop sakura zsh (gparted dosfstools f2fs-tools btrfs-progs 
 #		exfat-utils udftools gpart mtools) unzip unrar p7zip lxappearance virtualbox 
 #		virtualbox-guest-dkms virtualbox-gues-iso
 #
