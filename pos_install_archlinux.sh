@@ -14,6 +14,10 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
 localectl set-x11-keymap br abnt2
 
+# Configuração modo de suspensão
+echo "HandleLidSwitch=suspend" >> /etc/systemd/logind.conf
+echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
+
 # ================================================
 # Instalação de programas 
 # ================================================
@@ -48,18 +52,13 @@ localectl set-x11-keymap br abnt2
 #	[ Opcional ]
 #		nvidia nvidia-settings opencl-nvidia ibus ibus-anthy
 
-pacman -S --noconfirm sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-gues-iso simplescreenrecorder compton clang vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip nvidia nvidia-settings opencl-nvidia gtk-engines gtk-chtheme gtk-engines-murrine john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond dialog network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volmeicon audacity nitrogen gimp inkscape retroarch playonlinux ttf-dejavu noto-fonts dina-font profont ttf-liberation ttf-freefont cups cups-pdf wine mpg123 openal fluidsynth ibus ibus-anthy
-
+pacman -S --noconfirm sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton clang vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip nvidia nvidia-settings opencl-nvidia gtk-engines gtk-chtheme john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond dialog network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volmeicon audacity nitrogen gimp inkscape retroarch playonlinux ttf-dejavu noto-fonts dina-font profont ttf-liberation ttf-freefont cups cups-pdf wine mpg123 openal fluidsynth ibus ibus-anthy
 
 # Configurando o sudo
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' >> /etc/sudoers
 
 # Criando diretórios do usuário.
 xdg-user-dirs-update
-
-# Configuração modo de suspensão
-echo "HandleLidSwitch=suspend" >> /etc/systemd/logind.conf
-echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 
 # Abilitando gerenciador de login.
 systemctl enable lxdm.service
