@@ -25,7 +25,7 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 # ================================================
 #
 #	[ Sistema ]
-#		intel-ucode xf86-input-synaptics cron xdg-user-dirs clang cups cups-pdf 
+#		intel-ucode xf86-input-synaptics cron xdg-user-dirs cups cups-pdf 
 #		ttf-dejavu noto-fonts ttf-liberation ttf-freefont
 #
 #	[ Interface]
@@ -84,17 +84,18 @@ passwd hv60t
 echo -e "\033[32;1m[+] Adicionando usuário hv60t para o grupo [\033[m \033[33;1mvboxusers\033[m \033[32;1m]\033[m"
 gpasswd -a hv60t vboxusers
 
-# Carregando modulo do virtualbox na inicialização.
+echo -e "\033[32;1m[+] Carregando modulo do virtualbox na inicialização.\033[m"
 echo vboxdrv >> /etc/modules-load.d/virtualbox.conf
 
 echo -e "\033[32;1m[+] Atualizar a base de dados dos módulos.\033[m"
 depmod -a
 
-echo -e "\033[32;1m[+] Carregando as configurações do fluxbox.\033[m"
+echo -e "\033[32;1m[+] Carregando as configurações para o fluxbox do Github.\033[m"
 git clone https://github.com/Hv60t/Configs.git
+echo -e "\033[32;1m[+] Copiando as configurações para o diretório dos usuários..\033[m"
 cp -R Configs/fluxbox ~/.fluxbox
 cp -R Configs/fluxbox /home/hv60t/.fluxbox
 chown hv60t:users -R /home/hv60t/.fluxbox
 rm -rf Scripts
 echo ""
-echo -e "\033[31;1;5m[+] REINICIAR O SISTEMA.\033[m"
+echo -e "\033[31;1;5m[+]\033[m \033[31;1;5mREINICIE O SISTEMA.\033[m"
