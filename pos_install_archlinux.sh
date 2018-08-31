@@ -44,7 +44,7 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #
 #	[ Rede ]
 #		wireless_tools wpa_actiond wpa_supplicant dialog network-manager-applet links firefox thunderbird
-#		apache php tor chromium wget
+#		apache php tor chromium wget networkmanager
 #
 #	[ Pentest ]
 #		john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng 
@@ -58,10 +58,10 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #	[ Opcional ]
 #		nvidia nvidia-settings opencl-nvidia ibus ibus-anthy
 
-pacman -S sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip nvidia nvidia-settings opencl-nvidia gtk-engines gtk-chtheme john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape retroarch playonlinux ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups cups-pdf wine mpg123 openal ibus ibus-anthy
+pacman -S sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip nvidia nvidia-settings opencl-nvidia gtk-engines gtk-chtheme john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape retroarch playonlinux ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups cups-pdf wine mpg123 openal ibus ibus-anthy
 
 # Configurando o sudo
-sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' >> /etc/sudoers
+sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 # Criando diretórios do usuário.
 xdg-user-dirs-update
@@ -72,7 +72,7 @@ systemctl enable lxdm.service
 # Criando usuário.
 useradd -m -g users -G wheel,storage,power -s /bin/zsh hv60t
 echo ""
-echo "[+] Informe a senha para o novo usuário: "
+echo -e "\033[32;1m[+] Informe a senha para o novo usuário\033[0m"
 passwd hv60t
 
 # Adicionando usuário ao grupo virtualbox
@@ -88,7 +88,8 @@ depmod -a
 git clone https://github.com/Hv60t/Configs.git
 cp -R Configs/fluxbox ~/.fluxbox
 cp -R Configs/fluxbox /home/hv60t/.fluxbox
-chwon hv60t:hv60t -R /home/hv60t/.fluxbox
+chown hv60t:users -R /home/hv60t/.fluxbox
+rm -rf Scripts
 
 # Reiniciando o sistema.
 reboot
