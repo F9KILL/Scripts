@@ -26,10 +26,10 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #
 #	[ Sistema ]
 #		intel-ucode xf86-input-synaptics cron xdg-user-dirs cups cups-pdf 
-#		ttf-dejavu noto-fonts ttf-liberation ttf-freefont ntfs-3g
+#		ttf-dejavu noto-fonts ttf-liberation ttf-freefont ntfs-3g dkms
 #
 #	[ Interface]
-#		xorg xorg-xinit fluxbox lxdm compton gtk-engines gtk-chtheme gtk-engines-murrine
+#		xorg xorg-xinit fluxbox lxdm compton gtk-engines gtk-chtheme gtk-engine-murrine
 #
 #	[ Jogos ]
 #		retroarch playonlinux wine
@@ -61,7 +61,7 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #		nvidia nvidia-settings opencl-nvidia ibus ibus-anthy
 
 echo -e "\033[32;1m[+] Seleção e instalação de programas.\033[m"
-pacman -S sudo intel-ucode zsh xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip nvidia nvidia-settings opencl-nvidia gtk-engines gtk-chtheme john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape retroarch playonlinux ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups cups-pdf wine mpg123 openal ibus ibus-anthy
+pacman -S sudo intel-ucode zsh dkms xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip nvidia nvidia-settings opencl-nvidia gtk-engines gtk-chtheme john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape retroarch playonlinux ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups cups-pdf wine mpg123 openal ibus ibus-anthy
 
 echo -e "\033[32;1m[+] Configurando SUDO.\033[m"
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
