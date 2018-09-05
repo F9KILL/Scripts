@@ -25,10 +25,10 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 # ================================================
 #
 #	[ Sistema ]
-#		intel-ucode xf86-input-synaptics cron xdg-user-dirs cups cups-pdf 
+#		intel-ucode xf86-input-synaptics xf86-video-nouveau cron xdg-user-dirs cups
 #		ttf-dejavu noto-fonts ttf-liberation ttf-freefont ntfs-3g dkms
 #
-#	[ Interface]
+#	[ Interface ]
 #		xorg xorg-xinit fluxbox lxdm compton gtk-engines gtk-chtheme gtk-engine-murrine
 #
 #	[ Áudio/Video ]
@@ -55,10 +55,10 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #		virtualbox-guest-dkms virtualbox-gues-iso
 #
 #	[ Opcional ]
-#		xf86-video-nouveau ibus ibus-anthy
+#		ibus ibus-anthy
 
 echo -e "\033[32;1m[+] Seleção e instalação de programas.\033[m"
-pacman -S sudo intel-ucode zsh dkms xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip xf86-video-nouveau gtk-engines gtk-chtheme wine john hashcat hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng wifite reaver macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox thunderbird apache php tor chromium wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups cups-pdf mpg123 openal
+pacman -S sudo intel-ucode zsh dkms xf86-video-nouveau xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip gtk-engines gtk-chtheme gtk-engine-murrine wine john hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox chromium thunderbird apache php tor wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups mpg123 openal
 
 echo -e "\033[32;1m[+] Configurando SUDO.\033[m"
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
@@ -95,4 +95,4 @@ cp -R Configs/fluxbox /home/hv60t/.fluxbox
 chown hv60t:users -R /home/hv60t/.fluxbox
 rm -rf Scripts
 echo ""
-echo -e "\033[31;1;5m[+]\033[m \033[31;1;5mREINICIE O SISTEMA.\033[m"
+echo -e "\033[31;1;5m[+]\033[m \033[31;1mREINICIE O SISTEMA.\033[m"
