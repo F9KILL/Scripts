@@ -81,14 +81,15 @@ systemctl enable lxdm.service
 echo -e "\033[32;1m[+] Abilitando o NetworkManager na inicialização.\033[m"
 systemctl enable NetworkManager.service
 
-echo -e "\033[32;1m[+] Criando usuário [\033[m \033[33;1mhv60t\033[m \033[32;1m]\033[m"
-useradd -m -g users -G wheel,storage,power -s /bin/zsh hv60t
+echo -e "\033[32;1m[+] Criando usuário [\033[m \033[33;1mf9kill\033[m \033[32;1m]\033[m"
+useradd -m -g users -G wheel,storage,power -s /bin/zsh f9kill
 echo ""
-echo -e "\033[32;1m[+] Informe a senha para o usuário hv60t.\033[m"
-passwd hv60t
+echo -e "\033[32;1m[+] Informe a senha para o usuário f9kill.\033[m"
+passwd f9kill
 
-echo -e "\033[32;1m[+] Adicionando usuário hv60t para o grupo [\033[m \033[33;1mvboxusers\033[m \033[32;1m]\033[m"
-gpasswd -a hv60t vboxusers
+echo -e "\033[32;1m[+] Adicionando usuário f9kill para o grupo [\033[m \033[33;1mvboxusers\033[m 
+\033[32;1m]\033[m"
+gpasswd -a f9kill vboxusers
 
 echo -e "\033[32;1m[+] Carregando modulo do virtualbox na inicialização.\033[m"
 echo vboxdrv >> /etc/modules-load.d/virtualbox.conf
@@ -97,11 +98,11 @@ echo -e "\033[32;1m[+] Atualizar a base de dados dos módulos.\033[m"
 depmod -a
 
 echo -e "\033[32;1m[+] Carregando as configurações para o fluxbox do Github.\033[m"
-git clone https://github.com/Hv60t/Configs.git
+git clone https://github.com/F9KILL/Configs.git
 echo -e "\033[32;1m[+] Copiando as configurações para o diretório dos usuários..\033[m"
 cp -R Configs/fluxbox ~/.fluxbox
-cp -R Configs/fluxbox /home/hv60t/.fluxbox
-chown hv60t:users -R /home/hv60t/.fluxbox
+cp -R Configs/fluxbox /home/f9kill/.fluxbox
+chown f9kill:users -R /home/f9kill/.fluxbox
 rm -rf Scripts
 echo ""
 echo -e "\033[31;1;5m[+]\033[m \033[31;1mREINICIE O SISTEMA.\033[m"
