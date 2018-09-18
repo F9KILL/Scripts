@@ -12,9 +12,18 @@ locale-gen
 echo -e "\033[32;1m[+] Configurando LANG para inglês [\033[m \033[33;1men_US.UTF-8\033[m \033[32;1m]\033[m"
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
-echo -e "\033[32;1m[+] Configurando KEYMAP para ABNT2 [\033[m \033[33;1mbr-abnt2\033[m \033[32;1m]\033[m"
+echo -e "\033[32;1m[+] Configurando Teclado para ABNT2 [\033[m \033[33;1mbr-abnt2\033[m \033[32;1m]\033[m"
 echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
 localectl set-x11-keymap br abnt2
+
+echo 'Section “InputClass”' > /etc/X11/xorg.conf.d/10-evdev.conf
+echo '    Identifier “evdev keyboard catchall”' >> /etc/X11/xorg.conf.d/10-evdev.conf
+echo '    MatchIsKeyboard “on”' >> /etc/X11/xorg.conf.d/10-evdev.conf
+echo '    MatchDevicePath “/dev/input/event*”' >> /etc/X11/xorg.conf.d/10-evdev.conf
+echo '    Driver “evdev”' >> /etc/X11/xorg.conf.d/10-evdev.conf
+echo '    Option “XkbLayout” “br”' >> /etc/X11/xorg.conf.d/10-evdev.conf
+echo '    Option “XkbVariant” “abnt2"' >> /etc/X11/xorg.conf.d/10-evdev.conf
+echo 'EndSection' >> /etc/X11/xorg.conf.d/10-evdev.conf
 
 echo -e "\033[32;1m[+] Configurando modo de suspenção.\033[m"
 echo "HandleLidSwitch=suspend" >> /etc/systemd/logind.conf
