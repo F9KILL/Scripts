@@ -7,8 +7,12 @@
 # =========================================================
 
 if [ "$1" == "" ]; then
+	echo "                      _"
+	echo "   ___  ___ ________ (_)__  ___ _"
+	echo "  / _ \/ _ `/ __(_-</ / _ \/ _ `/"
+	echo " / .__/\_,_/_/ /___/_/_//_/\_, /"
+	echo "/_/                       /___/"
 	echo
-	echo "Curso Pentest Profissional - DESEC Security"
 	echo "Exemplo de uso: $0 www.site.com.br"
 	echo
 else
