@@ -2,8 +2,9 @@
 
 """
 Programa para verificar o número de acertos de jogos da loteria.
-Necessário um arquivo de texto com os jogos que deseja conferir,
- no mesmo local do programa. O arquivo deve ter a seguinte sintaxe:
+Necessário um arquivo de texto com o nome "jogos" contendo os jogos que 
+deseja conferir, no mesmo local do programa. O arquivo deve ter 
+a seguinte sintaxe:
 
 <Nome do jogo> <números>
 
