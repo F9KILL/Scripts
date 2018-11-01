@@ -11,6 +11,11 @@ locale-gen
 
 echo -e "\033[32;1m[+] Configurando LANG para inglês [\033[m \033[33;1men_US.UTF-8\033[m \033[32;1m]\033[m"
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+echo "LANGUAGE=en_US" >> /etc/locale.conf
+echo "LC_MESSAGES=en_US.UTF-8" >> /etc/locale.conf
+echo "LC_TIME=pt_BR.UTF-8" >> /etc/locale.conf
+echo "LC_MONETARY=pt_BR.UTF-8" >> /etc/locale.conf
+echo "LC_NUMERIC=pt_BR.UTF-8" >> /etc/locale.conf
 
 echo -e "\033[32;1m[+] Configurando Teclado para ABNT2 [\033[m \033[33;1mbr-abnt2\033[m \033[32;1m]\033[m"
 echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
@@ -38,7 +43,7 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #		ttf-dejavu noto-fonts ttf-liberation ttf-freefont ntfs-3g dkms
 #
 #	[ Interface ]
-#		xorg xorg-xinit fluxbox lxdm compton gtk-engines gtk-chtheme gtk-engine-murrine
+#		xorg xorg-xinit openbox lxdm compton gtk-engines gtk-chtheme gtk-engine-murrine
 #
 #	[ Áudio/Video ]
 #		simplescreenrecorder pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa
@@ -67,7 +72,7 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #		ibus ibus-anthy
 
 echo -e "\033[32;1m[+] Seleção e instalação de programas.\033[m"
-pacman -S sudo intel-ucode zsh dkms xf86-video-nouveau xf86-input-synaptics xorg xorg-xinit fluxbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip gtk-engines gtk-chtheme gtk-engine-murrine wine john hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox chromium thunderbird apache php tor wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups mpg123 openal
+pacman -S sudo intel-ucode zsh dkms xf86-video-nouveau xf86-input-synaptics xorg xorg-xinit openbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip gtk-engines gtk-chtheme gtk-engine-murrine wine john hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox chromium thunderbird apache php tor wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups mpg123 openal
 
 echo -e "\033[32;1m[+] Configurando SUDO.\033[m"
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
