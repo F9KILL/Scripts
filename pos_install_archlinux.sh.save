@@ -50,10 +50,10 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #		pulseaudio moc mpv vlc volmeicon audacity mpg123 openal fluidsynth
 #
 #	[ Acessórios ]
-#		ranger epdfview xorg-xcalc vim anki xsane libreoffice
+#		ranger epdfview xorg-xcalc vim  anki xsane libreoffice
 #
 #	[ Imagens ]
-#		(scrot giblib) feh nitrogen gimp inkscape imagemagick
+#		(scrot giblib) nitrogen gimp inkscape imagemagick
 #
 #	[ Rede ]
 #		wireless_tools wpa_actiond wpa_supplicant dialog network-manager-applet links firefox thunderbird
@@ -72,7 +72,7 @@ echo "HandleLidSwitchDocked=suspend" >> /etc/systemd/logind.conf
 #		ibus ibus-anthy
 
 echo -e "\033[32;1m[+] Seleção e instalação de programas.\033[m"
-pacman -S sudo intel-ucode zsh dkms xf86-video-nouveau xf86-input-synaptics xorg xorg-xinit openbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim leafpad anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip gtk-engines gtk-chtheme gtk-engine-murrine wine john hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox chromium thunderbird apache php tor wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups mpg123 openal
+pacman -S sudo intel-ucode zsh dkms xf86-video-nouveau xf86-input-synaptics xorg xorg-xinit openbox lxdm xterm sakura ntfs-3g ranger htop epdfview scrot giblib cron xdg-user-dirs xorg-xcalc virtualbox virtualbox-guest-dkms virtualbox-guest-iso simplescreenrecorder compton vim anki lxappearance gparted dosfstools f2fs-tools btrfs-progs exfat-utils udftools gpart mtools unzip unrar p7zip gtk-engines gtk-chtheme gtk-engine-murrine wine john hydra findmyhash hping tcpdump proxychains nmap nikto aircrack-ng macchanger wireshark-cli wireshark-common wireshark-gtk wireless_tools wpa_actiond wpa_supplicant dialog networkmanager network-manager-applet links firefox chromium thunderbird apache php tor wget xsane pavucontrol alsa-firmware alsa-utils alsa-plugins pulseaudio-alsa pulseaudio moc mpv vlc volumeicon audacity nitrogen gimp inkscape ttf-dejavu noto-fonts ttf-liberation ttf-freefont cups mpg123 openal
 
 echo -e "\033[32;1m[+] Configurando SUDO.\033[m"
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
@@ -80,8 +80,7 @@ sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 echo -e "\033[32;1m[+] Criando diretórios do usuário.\033[m"
 xdg-user-dirs-update
 
-# echo -e "\033[32;1m[+] Abilitando o LXDM na inicialização.\033[m"
-# systemctl enable lxdm.service
+e
 
 echo -e "\033[32;1m[+] Abilitando o NetworkManager na inicialização.\033[m"
 systemctl enable NetworkManager.service
@@ -105,9 +104,9 @@ depmod -a
 echo -e "\033[32;1m[+] Carregando as configurações para o fluxbox do Github.\033[m"
 git clone https://github.com/F9KILL/Configs.git
 echo -e "\033[32;1m[+] Copiando as configurações para o diretório dos usuários..\033[m"
-cp -R Configs/openbox ~/.config/
-cp -R Configs/openbox /home/f9kill/.config/
-chown f9kill:users -R /home/f9kill/.config/
-#rm -rf Scripts
+cp -R Configs/fluxbox ~/.fluxbox
+cp -R Configs/fluxbox /home/f9kill/.fluxbox
+chown f9kill:users -R /home/f9kill/.fluxbox
+rm -rf Scripts
 echo ""
 echo -e "\033[31;1;5m[+]\033[m \033[31;1mREINICIE O SISTEMA.\033[m"
