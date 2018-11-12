@@ -27,6 +27,13 @@ epdfview
 xorg-xcalc
 wget
 leafpad
+git
+orage
+keepassx2
+veracrypt
+anki
+libreoffice-fresh
+openssh
 
 simplescreenrecorder 
 pavucontrol 
@@ -96,3 +103,12 @@ macchanger
 wireshark-cli 
 wireshark-common 
 wireshark-gtk
+
+nvidia-390xx
+nvidia-390xx-settings
+opencl-nvidia-390xx
+
+<> configurar virtualbox
+<> configurar teclado no openbox
+<> configurar SSH
+<> configurar Git
