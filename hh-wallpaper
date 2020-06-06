@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+################################################################################
+# Autor     : Hugo Torres                                                      #
+# Data      : 30/05/2020                                                       #
+# Licença   : BSD 2-Clause                                                     #
+# Versão    : 1.0                                                              #
+#                                                                              #
+# Descrição : Muda o wallpaper com base nas horas.                             #
+################################################################################
+
+# Horas
+horas=('00' '01' '02' '03' '04' '05' '06' '07' '08' '09' '10' \
+    '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23')
+
+# Nome do diretório das imagens
+diretorio='Outset'
+
+# Caminho do diretório das imagens
+caminho="/opt/wallpaper/${diretorio}/"
+
+# Pega hora do sistema
+X="$(date +%H)"
+
+# Caso o valor inicie com zero ele será removido.
+X="${X#0}"
+
+# Loop que verifica se a imagem existe, caso exista será aplicada, caso
+# contrario sera aplicado a imagem anterior mais próxima.
+while true; do
+    if [[ -e ${caminho}${horas[$X]}.png ]]; then
+        feh --bg-scale ${caminho}${horas[$X]}.png
+        break
+    else
+        ((X--))    
+    fi
+done
