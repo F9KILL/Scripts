@@ -29,7 +29,7 @@ X="${X#0}"
 # contrario sera aplicado a imagem anterior mais próxima.
 while true; do
     if [[ -e ${caminho}${horas[$X]}.png ]]; then
-        feh --bg-scale ${caminho}${horas[$X]}.png
+        DISPLAY=:0 feh --bg-scale "${caminho}${horas[$X]}.png"
         break
     else
         ((X--))    
